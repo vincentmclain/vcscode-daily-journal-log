@@ -1,0 +1,62 @@
+{
+  "name": "daily-journal",
+  "displayName": "daily-journal",
+  "description": "",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.99.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:daily-journal.addEntry"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "daily-journal.addEntry",
+        "title": "Daily Journal: Add Entry"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "daily-journal.addEntry",
+        "key": "ctrl+shift+j",
+        "mac": "cmd+shift+j",
+        "when": "editorTextFocus"
+      }
+    ]
+  },
+  "configuration": {
+    "title": "Daily Journal",
+    "properties": {
+      "daily-journal.journalDirectory": {
+        "type": "string",
+        "default": "journal",
+        "description": "The base directory where your daily journal files are stored (e.g., 'journal'). This directory will be created if it does not exist.  It can be an absolute path, or a path relative to the workspace root.",
+        "isAbsolute": false
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.99.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "20.x",
+    "@typescript-eslint/eslint-plugin": "^8.28.0",
+    "@typescript-eslint/parser": "^8.28.0",
+    "eslint": "^9.23.0",
+    "typescript": "^5.8.2",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1"
+  }
+}
